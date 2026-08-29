@@ -1,0 +1,216 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 650px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 8px;
+    color: #222;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.progress {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Flashcard */
+
+.flashcard {
+    width: 100%;
+    height: 320px;
+    perspective: 1000px;
+    cursor: pointer;
+    margin-bottom: 25px;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flashcard.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    border-radius: 15px;
+    padding: 40px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    backface-visibility: hidden;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card-front {
+    background: white;
+}
+
+.card-back {
+    background: #222;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.label {
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    color: #777;
+}
+
+.card-back .label {
+    color: #ccc;
+}
+
+.card-front h2,
+.card-back h2 {
+    font-size: 25px;
+    line-height: 1.4;
+}
+
+.card-front p {
+    margin-top: 25px;
+    font-size: 14px;
+    color: #888;
+}
+
+/* Answer Buttons */
+
+.answer-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.answer-buttons button {
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.wrong {
+    background: #e8e8e8;
+    color: #333;
+}
+
+.correct {
+    background: #222;
+    color: white;
+}
+
+.answer-buttons button:hover {
+    transform: translateY(-2px);
+}
+
+/* Navigation */
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.navigation button,
+.restart {
+    padding: 10px 18px;
+    border: 1px solid #ccc;
+    background: white;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.navigation button:hover,
+.restart:hover {
+    background: #eee;
+}
+
+.score {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.restart {
+    background: #222;
+    color: white;
+    border: none;
+    padding: 11px 25px;
+}
+
+.restart:hover {
+    background: #444;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .flashcard {
+        height: 280px;
+    }
+
+    .card-front,
+    .card-back {
+        padding: 25px;
+    }
+
+    .card-front h2,
+    .card-back h2 {
+        font-size: 21px;
+    }
+
+    .navigation {
+        flex-wrap: wrap;
+    }
+}
