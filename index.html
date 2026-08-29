@@ -12,13 +12,18 @@
     <div class="container">
 
         <h1>Flashcard App</h1>
-        <p class="subtitle">Test your knowledge and improve your learning.</p>
+        <p class="subtitle">Learn, revise, and test your knowledge.</p>
+
+        <!-- Flashcard Section -->
 
         <div class="progress">
-            Card <span id="current-card">1</span> of <span id="total-cards">5</span>
+            Card <span id="current-card">1</span>
+            of
+            <span id="total-cards">5</span>
         </div>
 
         <div class="flashcard" id="flashcard">
+
             <div class="card-inner">
 
                 <div class="card-front">
@@ -33,24 +38,75 @@
                 </div>
 
             </div>
+
         </div>
+
+        <!-- Answer Buttons -->
 
         <div class="answer-buttons">
-            <button class="wrong" id="wrong-btn">Didn't Know</button>
-            <button class="correct" id="correct-btn">Knew It</button>
+
+            <button class="wrong" id="wrong-btn">
+                Didn't Know
+            </button>
+
+            <button class="correct" id="correct-btn">
+                Knew It
+            </button>
+
         </div>
 
+        <!-- Navigation -->
+
         <div class="navigation">
-            <button id="prev-btn">Previous</button>
-            <button id="shuffle-btn">Shuffle</button>
-            <button id="next-btn">Next</button>
+
+            <button id="prev-btn">
+                Previous
+            </button>
+
+            <button id="shuffle-btn">
+                Shuffle
+            </button>
+
+            <button id="next-btn">
+                Next
+            </button>
+
         </div>
 
         <div class="score">
             Score: <span id="score">0</span>
         </div>
 
-        <button class="restart" id="restart-btn">Restart</button>
+        <!-- Add Flashcard -->
+
+        <div class="add-card-section">
+
+            <h2>Add New Flashcard</h2>
+
+            <input
+                type="text"
+                id="new-question"
+                placeholder="Enter your question"
+            >
+
+            <textarea
+                id="new-answer"
+                placeholder="Enter your answer"
+            ></textarea>
+
+            <button id="add-btn">
+                Add Flashcard
+            </button>
+
+            <p id="message"></p>
+
+        </div>
+
+        <!-- Restart -->
+
+        <button class="restart" id="restart-btn">
+            Restart
+        </button>
 
     </div>
 
