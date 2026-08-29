@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcard App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Flashcard App</h1>
+        <p class="subtitle">Test your knowledge and improve your learning.</p>
+
+        <div class="progress">
+            Card <span id="current-card">1</span> of <span id="total-cards">5</span>
+        </div>
+
+        <div class="flashcard" id="flashcard">
+            <div class="card-inner">
+
+                <div class="card-front">
+                    <span class="label">QUESTION</span>
+                    <h2 id="question">Loading...</h2>
+                    <p>Click the card to reveal the answer</p>
+                </div>
+
+                <div class="card-back">
+                    <span class="label">ANSWER</span>
+                    <h2 id="answer">Loading...</h2>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="answer-buttons">
+            <button class="wrong" id="wrong-btn">Didn't Know</button>
+            <button class="correct" id="correct-btn">Knew It</button>
+        </div>
+
+        <div class="navigation">
+            <button id="prev-btn">Previous</button>
+            <button id="shuffle-btn">Shuffle</button>
+            <button id="next-btn">Next</button>
+        </div>
+
+        <div class="score">
+            Score: <span id="score">0</span>
+        </div>
+
+        <button class="restart" id="restart-btn">Restart</button>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
