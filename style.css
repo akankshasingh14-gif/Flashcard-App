@@ -1,216 +1,257 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+let flashcards = [
+    {
+        question: "What does HTML stand for?",
+        answer: "HyperText Markup Language"
+    },
+    {
+        question: "What does CSS stand for?",
+        answer: "Cascading Style Sheets"
+    },
+    {
+        question: "What is JavaScript used for?",
+        answer: "JavaScript is used to make websites interactive and dynamic."
+    },
+    {
+        question: "What is an array?",
+        answer: "An array is a collection of multiple values stored in a single variable."
+    },
+    {
+        question: "What is a function?",
+        answer: "A function is a reusable block of code designed to perform a specific task."
+    }
+];
+
+let currentIndex = 0;
+let score = 0;
+
+
+/* Get HTML Elements */
+
+const flashcard = document.getElementById("flashcard");
+
+const question = document.getElementById("question");
+
+const answer = document.getElementById("answer");
+
+const currentCard = document.getElementById("current-card");
+
+const totalCards = document.getElementById("total-cards");
+
+const scoreDisplay = document.getElementById("score");
+
+const prevButton = document.getElementById("prev-btn");
+
+const nextButton = document.getElementById("next-btn");
+
+const shuffleButton = document.getElementById("shuffle-btn");
+
+const correctButton = document.getElementById("correct-btn");
+
+const wrongButton = document.getElementById("wrong-btn");
+
+const restartButton = document.getElementById("restart-btn");
+
+const addButton = document.getElementById("add-btn");
+
+const newQuestion = document.getElementById("new-question");
+
+const newAnswer = document.getElementById("new-answer");
+
+const message = document.getElementById("message");
+
+
+/* Display Current Card */
+
+function displayCard() {
+
+    question.textContent =
+        flashcards[currentIndex].question;
+
+    answer.textContent =
+        flashcards[currentIndex].answer;
+
+    currentCard.textContent =
+        currentIndex + 1;
+
+    totalCards.textContent =
+        flashcards.length;
+
+    flashcard.classList.remove("flipped");
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f6f8;
-    min-height: 100vh;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Flip Card */
 
-    padding: 20px;
-}
+flashcard.addEventListener("click", function () {
 
-.container {
-    width: 100%;
-    max-width: 650px;
-    text-align: center;
-}
+    flashcard.classList.toggle("flipped");
 
-h1 {
-    font-size: 36px;
-    margin-bottom: 8px;
-    color: #222;
-}
+});
 
-.subtitle {
-    color: #666;
-    margin-bottom: 25px;
-}
 
-.progress {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 15px;
-}
+/* Next Card */
 
-/* Flashcard */
+nextButton.addEventListener("click", function () {
 
-.flashcard {
-    width: 100%;
-    height: 320px;
-    perspective: 1000px;
-    cursor: pointer;
-    margin-bottom: 25px;
-}
+    currentIndex++;
 
-.card-inner {
-    width: 100%;
-    height: 100%;
-    position: relative;
-
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-}
-
-.flashcard.flipped .card-inner {
-    transform: rotateY(180deg);
-}
-
-.card-front,
-.card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-
-    border-radius: 15px;
-    padding: 40px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    backface-visibility: hidden;
-
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-}
-
-.card-front {
-    background: white;
-}
-
-.card-back {
-    background: #222;
-    color: white;
-    transform: rotateY(180deg);
-}
-
-.label {
-    font-size: 13px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    margin-bottom: 25px;
-    color: #777;
-}
-
-.card-back .label {
-    color: #ccc;
-}
-
-.card-front h2,
-.card-back h2 {
-    font-size: 25px;
-    line-height: 1.4;
-}
-
-.card-front p {
-    margin-top: 25px;
-    font-size: 14px;
-    color: #888;
-}
-
-/* Answer Buttons */
-
-.answer-buttons {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.answer-buttons button {
-    border: none;
-    padding: 12px 25px;
-    border-radius: 8px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.wrong {
-    background: #e8e8e8;
-    color: #333;
-}
-
-.correct {
-    background: #222;
-    color: white;
-}
-
-.answer-buttons button:hover {
-    transform: translateY(-2px);
-}
-
-/* Navigation */
-
-.navigation {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.navigation button,
-.restart {
-    padding: 10px 18px;
-    border: 1px solid #ccc;
-    background: white;
-    border-radius: 7px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.navigation button:hover,
-.restart:hover {
-    background: #eee;
-}
-
-.score {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-.restart {
-    background: #222;
-    color: white;
-    border: none;
-    padding: 11px 25px;
-}
-
-.restart:hover {
-    background: #444;
-}
-
-/* Mobile */
-
-@media (max-width: 600px) {
-
-    h1 {
-        font-size: 30px;
+    if (currentIndex >= flashcards.length) {
+        currentIndex = 0;
     }
 
-    .flashcard {
-        height: 280px;
+    displayCard();
+
+});
+
+
+/* Previous Card */
+
+prevButton.addEventListener("click", function () {
+
+    currentIndex--;
+
+    if (currentIndex < 0) {
+        currentIndex = flashcards.length - 1;
     }
 
-    .card-front,
-    .card-back {
-        padding: 25px;
+    displayCard();
+
+});
+
+
+/* Knew It */
+
+correctButton.addEventListener("click", function () {
+
+    score++;
+
+    scoreDisplay.textContent = score;
+
+    moveToNextCard();
+
+});
+
+
+/* Didn't Know */
+
+wrongButton.addEventListener("click", function () {
+
+    moveToNextCard();
+
+});
+
+
+/* Move to Next Card */
+
+function moveToNextCard() {
+
+    currentIndex++;
+
+    if (currentIndex >= flashcards.length) {
+        currentIndex = 0;
     }
 
-    .card-front h2,
-    .card-back h2 {
-        font-size: 21px;
-    }
-
-    .navigation {
-        flex-wrap: wrap;
-    }
+    displayCard();
 }
+
+
+/* Shuffle */
+
+shuffleButton.addEventListener("click", function () {
+
+    for (let i = flashcards.length - 1; i > 0; i--) {
+
+        let randomIndex =
+            Math.floor(Math.random() * (i + 1));
+
+        let temp = flashcards[i];
+
+        flashcards[i] = flashcards[randomIndex];
+
+        flashcards[randomIndex] = temp;
+    }
+
+    currentIndex = 0;
+
+    displayCard();
+
+});
+
+
+/* Add New Flashcard */
+
+addButton.addEventListener("click", function () {
+
+    let questionText =
+        newQuestion.value.trim();
+
+    let answerText =
+        newAnswer.value.trim();
+
+
+    /* Check if fields are empty */
+
+    if (questionText === "" || answerText === "") {
+
+        message.textContent =
+            "Please enter both a question and an answer.";
+
+        return;
+    }
+
+
+    /* Create New Flashcard */
+
+    let newFlashcard = {
+
+        question: questionText,
+
+        answer: answerText
+    };
+
+
+    /* Add to Array */
+
+    flashcards.push(newFlashcard);
+
+
+    /* Clear Input Fields */
+
+    newQuestion.value = "";
+
+    newAnswer.value = "";
+
+
+    /* Show Message */
+
+    message.textContent =
+        "Flashcard added successfully.";
+
+
+    /* Move to New Card */
+
+    currentIndex = flashcards.length - 1;
+
+    displayCard();
+
+});
+
+
+/* Restart */
+
+restartButton.addEventListener("click", function () {
+
+    currentIndex = 0;
+
+    score = 0;
+
+    scoreDisplay.textContent = score;
+
+    displayCard();
+
+});
+
+
+/* Initial Display */
+
+displayCard();
